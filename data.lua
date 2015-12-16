@@ -30,7 +30,7 @@ function load_data(fname)
     end
     table.insert(Y, class_map[class]) 
   end
-  return X, Y
+  return X, Y, class_idx
 end
 
 
