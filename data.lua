@@ -12,9 +12,12 @@ function load_data(fname)
   Y = {}
 
   for i = 1, #inputs do
+    -- if i == 12 then break end -- truncate data
     seq = inputs[i]
     seq_mapped = torch.Tensor(#seq):zero()
+    -- seq_mapped = torch.Tensor(19):zero()
     for j = 1, #seq do
+      -- if j == 20 then break end -- truncate data
       if char_map[string.sub(seq,j,j)] == nil then
         char_idx = char_idx + 1
         char_map[string.sub(seq,j,j)] = char_idx
