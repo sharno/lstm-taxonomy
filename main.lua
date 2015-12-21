@@ -7,8 +7,8 @@ require 'data'
 ----------------Load Data----------------
 -----------------------------------------
 print('Loading data ...')
--- inputs, outputs, num_classes = load_data('data/Chiroptera2classes.csv')
-inputs, outputs, num_classes = load_data('data/Chiroptera.csv')
+inputs, outputs, num_classes = load_data('data/Chiroptera2classes.csv')
+-- inputs, outputs, num_classes = load_data('data/Chiroptera.csv')
 print('Finished loading data')
 
 -----------------------------------------

@@ -1,6 +1,7 @@
 require 'csvigo'
 
 function load_data(fname)
+  window = 5
   data = csvigo.load({path = fname, verbose = false})
   inputs = data.X
   outputs = data.Y
@@ -12,17 +13,17 @@ function load_data(fname)
   Y = {}
 
   for i = 1, #inputs do
-    -- if i == 12 then break end -- truncate data
+    if i == 14 then break end -- truncate data
     seq = inputs[i]
     seq_mapped = torch.Tensor(#seq):zero()
     -- seq_mapped = torch.Tensor(19):zero()
-    for j = 1, #seq do
+    for j = 1, #seq, window do
       -- if j == 20 then break end -- truncate data
-      if char_map[string.sub(seq,j,j)] == nil then
+      if char_map[string.sub(seq,j,j+window)] == nil then
         char_idx = char_idx + 1
-        char_map[string.sub(seq,j,j)] = char_idx
+        char_map[string.sub(seq,j,j+window)] = char_idx
       end
-      seq_mapped[j] = char_map[string.sub(seq,j,j)]
+      seq_mapped[j] = char_map[string.sub(seq,j,j+window)]
     end
     table.insert(X,seq_mapped)
     
